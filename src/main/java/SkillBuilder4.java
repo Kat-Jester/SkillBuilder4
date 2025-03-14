@@ -9,10 +9,31 @@
 
 public class SkillBuilder4 {
 
-    // replace this line with your constants
+    private static final char START_CHAR_LOWER = 't';
+    private static final char START_CHAR_UPPER = 'T';
+    private static final char END_CHAR_LOWER = 'y';
+    private static final char END_CHAR_UPPER = 'Y';
 
-    public static String findTYPattern(String s)
-    {
-        // replace this line with your code
+
+    public static String findTYPattern(String s) {
+        if (s == null || s.isEmpty()) {
+            return "";
+        }
+
+        int start = -1;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+
+            if (start == -1 && (c == START_CHAR_LOWER || c == START_CHAR_UPPER)) {
+                start = i;
+            }
+
+            if (start != -1 && (c == END_CHAR_LOWER || c == END_CHAR_UPPER)) {
+                return s.substring(start, i + 1);
+            }
+        }
+        return "";
     }
+
 }
+
